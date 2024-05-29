@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Food Delivery</title>
+    <meta name="description" content="Grocery Food Delivery Website" />
+    <!-- kutty lib for tailwind components -->
+    <!-- Include AlpineJS first -->
+    <script src="https://cdn.jsdelivr.net/npm/kutty@latest/dist/alpinejs.min.js"></script>
+    <!-- And then the single component -->
+    <script src="https://cdn.jsdelivr.net/npm/kutty@latest/dist/drawer.min.js"></script>
+  </head>
+  <body class="debug-screens">
+    <!-- header -->
+    <header
+      class="container px-2 mx-auto pt-8 flex justify-between items-center"
+    >
+      <!-- logo -->
+      <div class="flex gap-1 items-center">
+        <img src="/logo.svg" alt="logo" />
+        <span class="text-zinc-800 font-semibold text-xl"> Grover </span>
+      </div>
+      <!-- menu for desktop-->
+      <nav>
+        <ul class="sm:flex hidden sm:gap-8 gap-2">
+          <li class="capitalize text-red-500 text-base font-semibold">home</li>
+          <li class="capitalize text-neutral-600 text-base font-semibold">
+            menu
+          </li>
+          <li class="capitalize text-neutral-600 text-base font-semibold">
+            service
+          </li>
+          <li class="capitalize text-neutral-600 text-base font-semibold">
+            shop
+          </li>
+        </ul>
+      </nav>
+      <!-- search box for desktop-->
+      <div class="relative md:flex p-4 gap-2 shadow hidden">
+        <img src="/search.svg" alt="shop bag" />
+
+        <input class="outline-none px-1" placeholder="Search" />
+        <img src="/shop-bag.svg" alt="shop bag" />
+        <span
+          class="bottom-10 right-0 absolute w-6 h-6 shadow-red-400 shadow-lg block text-center rounded-full bg-red-500 text-white"
+          >2</span
+        >
+      </div>
+      <!-- for mobile -->
+      <div x-data="drawer()" class="md:hidden">
+        <button class="btn mb-1" x-spread="trigger">
+          <svg
+            class="w-4 h-4 text-gray-800"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div class="dialog dialog-sm" x-spread="drawer" x-cloak>
+          <div class="drawer-content">
+            <div class="dialog-header">
+              Content
+              <button
+                type="button"
+                class="btn btn-light btn-sm btn-icon"
+                aria-label="Close"
+                @click="close"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="dialog-body flex gap-4 flex-col">
+              <!-- search box -->
+              <div class="relative flex w-full p-4 gap-2 shadow">
+                <img src="/search.svg" alt="shop bag" />
+
+                <input class="outline-none px-1 w-10/12" placeholder="Search" />
+                <img src="/shop-bag.svg" alt="shop bag" />
+                <span
+                  class="bottom-10 right-0 absolute w-6 h-6 shadow-red-400 shadow-lg block text-center rounded-full bg-red-500 text-white"
+                  >2</span
+                >
+              </div>
+              <!-- links   -->
+              <nav>
+                <ul class="flex flex-col md:gap-8 gap-2">
+                  <li class="capitalize text-red-500 text-base font-semibold">
+                    home
+                  </li>
+                  <li
+                    class="capitalize text-neutral-600 text-base font-semibold"
+                  >
+                    menu
+                  </li>
+                  <li
+                    class="capitalize text-neutral-600 text-base font-semibold"
+                  >
+                    service
+                  </li>
+                  <li
+                    class="capitalize text-neutral-600 text-base font-semibold"
+                  >
+                    shop
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+    <!-- hero -->
+    <main class="container px-4 mx-auto flex flex-wrap">
+      <!-- right -->
+      <div class="flex flex-col md:w-1/2 w-full md:pt-24 pt-12">
+        <span
+          class="mb-5 flex gap-2 rounded-full text-rose-500 px-4 py-2 text-base font-medium w-fit h-fit justify-center items-center bg-rose-50"
+          >More than Faster <img src="/strawberry.png" class="w-6"
+        /></span>
+        <p class="text-zinc-800 text-7xl font-bold mb-6">
+          Groceries delivered in as little as
+          <span class="text-red-500">2 hours</span>
+        </p>
+        <p class="text-stone-500 text-lg font-normal tracking-tight mb-20">
+          Grocen atssures fresh grocery every morning to your family without
+          getting out in this pandemic.
+        </p>
+        <div class="flex items-center">
+          <button
+            class="animate-bounce hover:animate-none md:py-6 py-3 md:px-10 px-5 capitalize bg-red-400 rounded-xl hover:bg-red-500 active:scale-105 text-neutral-50 text-xl font-medium leading-tight"
+          >
+            order now
+          </button>
+          <button
+            class="hover:text-neutral-800 active:scale-105 text-neutral-700 text-xl font-medium md:py-6 py-3 md:px-10 px-5 flex gap-1 items-center justify-center"
+          >
+            <div
+              class="flex border rounded-full w-10 h-10 items-center justify-center"
+            >
+              <span
+                class="w-0 h-0 border-l-[15px] border-t-[10px] border-b-[10px] border-t-transparent border-b-transparent border-l-yellow-300"
+              ></span>
+            </div>
+            Order Process
+          </button>
+        </div>
+      </div>
+      <!-- left -->
+      <div class="md:w-1/2 w-full flex justify-center relative">
+        <img src="hero.png" />
+        <!-- fresh orange box -->
+        <div
+          class="absolute top-1/4 left-10 z-10 shadow-lg rounded h-fit w-fit flex flex-col justify-center items-center px-6 pt-4 pb-8 bg-white gap-2"
+        >
+          <img src="orange.png" class="w-[101px] h-[88px]" />
+          <p class="text-center text-zinc-800 text-xs font-semibold">
+            Fresh Orenge
+          </p>
+          <div class="w-5 h-0.5 bg-amber-500 rounded-[1px]"></div>
+          <div
+            class="text-center text-zinc-800 text-2xl font-bold leading-tight"
+          >
+            $44.60
+          </div>
+          <div
+            class="text-center text-neutral-400 text-[10px] font-medium leading-[10px]"
+          >
+            Free Shipping
+          </div>
+        </div>
+        <!-- delivery box -->
+        <div
+          class="absolute top-10 right-0 px-6 py-3 rounded shadow-lg flex gap-4"
+        >
+          <img src="alarm-clock-icon.svg" />
+          <div class="flex flex-col">
+            <span class="text-[#404040] font-medium">Delivery</span>
+            <span class="text-[#A5A4A4] text-xs">30 Min</span>
+          </div>
+        </div>
+        <!--  -->
+        <img src="abstract.svg" class="absolute top-1/4 right-0" />
+      </div>
+    </main>
+    <!-- end hero -->
+    <!-- What we Serve section -->
+    <section
+      class="mt-10 py-24 px-4 bg-[#FEF5F5] flex flex-col gap-2 items-center justify-center"
+    >
+      <span class="text-[#F54748] text-lg font-medium">What we Serve</span>
+      <h2 class="text-center text-zinc-800 text-[40px] font-bold capitalize">
+        fruit and vegetable delivered to your home
+      </h2>
+      <div class="flex md:gap-12 gap-6 mt-16 flex-wrap justify-center">
+        <div
+          class="bg-white rounded-xl md:py-8 py-4 md:px-6 px-2 flex flex-col justify-center items-center w-[300px] h-[310px]"
+        >
+          <img src="free-shipping.svg" />
+          <span class="text-center text-zinc-800 text-[22px] font-semibold"
+            >Free shipping</span
+          >
+          <p class="text-center text-stone-500 text-sm font-normal mt-4">
+            Enjoy Order in a hand using the fresness of groceries
+          </p>
+        </div>
+        <div
+          class="bg-[#FD6969] rounded-xl flexjustify-center items-center w-[310px] h-[334.16px] origin-top-left -rotate-3"
+        >
+          <div
+            class="bg-white rounded-xl md:py-8 py-4 md:px-6 px-2 flex flex-col justify-center rotate-3 items-center w-[300px] h-[310px]"
+          >
+            <img src="money-back.svg" />
+            <span class="text-center text-zinc-800 text-[22px] font-semibold"
+              >15 days returns</span
+            >
+            <p class="text-center text-stone-500 text-sm font-normal mt-4">
+              Order in a handy way using the freshness of the groceries.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-xl md:py-8 py-4 md:px-6 px-2 flex flex-col justify-center items-center w-[300px] h-[310px]"
+        >
+          <img src="secure-checkout.svg" />
+          <span class="text-center text-zinc-800 text-[22px] font-semibold"
+            >Secure checkout</span
+          >
+          <p class="text-center text-stone-500 text-sm font-normal mt-4">
+            If you get rotten items - return immediately to us.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- End what we Serve section -->
+    <!-- WHY CHOOSE US section-->
+    <section
+      class="px-4 flex gap-4 md:gap-8 lg:gap-16 bg-white pt-16 pb-10 container mx-auto flex-wrap-reverse xxl:justify-between  justify-center items-center"
+    >
+      <!-- left -->
+      <div class="flex justify-center items-center">
+        <div
+          class="relative max-w-[95%] md:w-[500px] md:h-[500px] w-96 h-96 bg-red-50 rounded-full flex items-end justify-center cursor-pointer"
+        >
+          <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 z-10 shadow-lg rounded-lg h-fit w-fit flex flex-col justify-center items-center px-6 p-4 bg-white gap-2"
+          >
+            <span
+              class="text-center text-zinc-800 text-lg font-bold font-['Inter'] leading-[18px]"
+              >Melting Cheese</span
+            >
+            <div
+              class="text-center text-neutral-400 text-[10px] font-medium leading-[10px]"
+            >
+              Red Stovery
+            </div>
+            <img src="big-strawberry.png" class="w-[101px] h-[88px]" />
+            <div class="flex w-full">
+              <img src="star.svg" />
+              3.8
+            </div>
+            <div
+              class="w-full text-zinc-800 text-2xl font-bold leading-tight flex justify-between items-center"
+            >
+              $44.60
+              <button
+                class="active:scale-105 text-white text-center bg-red-500 font-light w-9 h-9 flex justify-center items-center rounded-lg"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <img src="stroke.svg" />
+        </div>
+      </div>
+      <!-- right -->
+      <div class="flex flex-col">
+        <span
+          class="mb-2 text-emerald-600 text-lg font-medium font-['Poppins'] leading-normal tracking-tight"
+          >WHY CHOOSE US</span
+        >
+
+        <h3
+          class="mb-4 text-zinc-800 text-[40px] font-bold capitalize leading-[54px]"
+        >
+          Find Favorites and Discover New Ones
+        </h3>
+        <p
+          class="mb-8 text-stone-500 text-lg font-normal font-['Poppins'] leading-[30px]"
+        >
+          At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis
+          praesen voluptatum deleniti.
+        </p>
+        <button
+          class="md:py-6 py-3 md:px-10 px-5  capitalize bg-red-400 rounded-xl hover:bg-red-500 active:scale-105 text-neutral-50 text-xl font-medium leading-tight w-fit"
+        >
+          Explore Now
+        </button>
+      </div>
+    </section>
+    <!-- End WHY CHOOSE US section-->
+    <!-- HOME DELIVERY -->
+    <section
+      class="flex flex-wrap-reverse gap-6 md:gap-12 xl:gap-24 xxl:justify-between justify-center mx-auto container mt-12 items-center px-4"
+    >
+      <!-- left -->
+      <div>
+        <span
+          class="mb-2 text-amber-300 text-lg font-medium font-['Poppins'] leading-normal tracking-tight"
+        >
+          HOME DELIVERY
+        </span>
+        <h4
+          class=" mb-6 text-zinc-800 text-[40px] font-bold font-['Poppins'] capitalize leading-[54px]"
+        >
+          Sit at Home We Will Take Care Your Order
+        </h4>
+        <p
+          class=" mb-12 text-stone-500 text-lg font-normal font-['Poppins'] leading-[30px]"
+        >
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui
+          blanditiis praesentium voluptatum deleniti atque corrupti quos
+        </p>
+        <button
+          class="md:py-4 md:px-8 py-2 px-4 capitalize bg-white text-red-500 border-red-400 rounded-xl hover:bg-red-500 hover:text-white active:scale-105 border text-xl font-medium leading-tight w-fit"
+        >
+          Explore Now
+        </button>
+      </div>
+      <!-- right -->
+      <div class="relative">
+        <div
+          class="absolute top-1/2 right-0 shadow-lg bg-white rounded-md p-4 text-center"
+        >
+          <div class="bg-red-50">
+            <img src="delivery.svg" />
+          </div>
+          <span
+            class="text-center text-zinc-800 text-base font-bold font-['Inter'] leading-[18px]"
+            >Bike Delivery</span
+          >
+          <p
+            class="w-[125px] text-center text-stone-500 text-[10px] font-normal font-['Inter'] leading-none"
+          >
+            Bicycle service ensures that your packages arrive quickly
+          </p>
+        </div>
+        <img src="section-2.png" />
+      </div>
+    </section>
+    <!-- End HOME DELIVERY -->
+    <!-- Download our app -->
+    <!-- End Download our app -->
+    <section class="px-4 mx-auto bg-rose-50 mt-12">
+      <div
+        class="container mx-auto flex justify-between items-center py-24 flex-wrap gap-y-6"
+      >
+        <img src="mobile-mockup.png" />
+        <div class="">
+          <span
+            class="mb-2 text-red-500 text-lg font-medium font-['Poppins'] leading-normal tracking-tight"
+          >
+            Download our app
+          </span>
+          <h5
+            class="mb-4  text-zinc-800 text-[40px] font-bold font-['Poppins'] capitalize leading-[54px]"
+          >
+            Get the Groceries app order more easily.
+          </h5>
+          <p
+            class="mb-14  text-stone-500 text-lg font-normal font-['Poppins'] leading-[30px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut.
+          </p>
+          <div class="flex gap-7">
+            <a
+              class="rounded-xl hover:border-stone-400 border border-stone-200 py-2 px-4 flex justify-center items-center gap-5 text-zinc-800 text-xl font-medium font-['Poppins'] leading-tight w-fit"
+              href="#"
+            >
+              <img src="apple-store.svg" />
+              App Store
+            </a>
+            <a
+              class="rounded-xl hover:border-stone-400 border border-stone-200 py-2 px-4 flex justify-center items-center gap-5 text-zinc-800 text-xl font-medium font-['Poppins'] leading-tight w-fit"
+              href="#"
+            >
+              <img src="play-sotre.svg" />
+
+              Play Store
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="mt-28 mb-8 container mx-auto px-4">
+      <div class="flex justify-between flex-wrap gap-8">
+        <div>
+          <div class="flex items-center gap-2">
+            <img src="logo.svg" />
+            <span class="text-zinc-800 text-xl font-medium">Grover</span>
+          </div>
+          <div
+            class="max-w-full mt-6 w-[266px] text-stone-500 text-base font-normal font-['Poppins'] leading-relaxed"
+          >
+            Fast delivery, which is active all over the world, serves with many
+            transportation vehicles.
+          </div>
+        </div>
+        <div
+          class="flex flex-col text-stone-500 text-base font-normal font-['Poppins'] leading-10"
+        >
+          <span
+            class="text-zinc-800 text-lg font-semibold font-['Poppins'] leading-tight mb-6"
+            >Company</span
+          >
+
+          <a>About Us </a>
+          <a>Blog</a>
+          <a>All Products </a>
+          <a> Locations Map</a>
+        </div>
+        <div
+          class="flex flex-col text-stone-500 text-base font-normal font-['Poppins'] leading-10"
+        >
+          <span
+            class="text-zinc-800 text-lg font-semibold font-['Poppins'] leading-tight mb-6"
+            >Service</span
+          >
+          <a>Order tracking </a>
+          <a>Wish List </a>
+          <a>My account </a>
+          <a> Terms & Conditions</a>
+        </div>
+        <div
+          class="flex flex-col text-stone-500 text-base font-normal font-['Poppins'] leading-10"
+        >
+          <span
+            class="text-zinc-800 text-lg font-semibold font-['Poppins'] leading-tight mb-6"
+            >Get in Touch</span
+          >
+          <a class="w-[191px] max-w-full"
+            >Subscribe to our weekly Newsletter and receive updates via
+            email.</a
+          >
+        </div>
+      </div>
+      <div class="border-t mt-20 mb-5 w-full"></div>
+      <div class="flex justify-between flex-wrap">
+        <div
+          class="text-neutral-400 text-sm font-normal font-['Poppins'] leading-normal"
+        >
+          All Rights Reserved @ BESNIK 2021
+        </div>
+
+        <div
+          class="text-neutral-500 text-sm font-medium font-['Poppins'] leading-normal"
+        >
+          Terms & Conditions &nbsp; Privacy & Policy
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
